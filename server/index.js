@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import postRoutes from './routes/posts.js';
+import config from './config';
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 //Mongo DB
-const CONNECTION_URL = 'mongodb+srv://wesborland1234:ChipSpanPatriot1989@cluster0.v9ntl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = config.MONGO_CONNECTION_URL;
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL)
