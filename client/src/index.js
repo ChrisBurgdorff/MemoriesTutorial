@@ -9,6 +9,7 @@ import think from 'redux-thunk';
 import reducers from './reducers';
 
 import App from './App';
+import './index.css';
 
 //const store = configureStore();
 const store = createStore(reducers, compose(applyMiddleware(thunk)));

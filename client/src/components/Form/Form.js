@@ -3,10 +3,10 @@ import { TextField, Button, Typography, Paper} from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/posts'
+import { createPost, updatePost } from '../../actions/posts'
 
 
-const Form = () => {
+const Form = ({currentId, setCurrentId }) => {
   const classes = useStyles();
 
   const [postData, setPostData] = useState({
@@ -20,7 +20,14 @@ const Form = () => {
   
   const handleSubmit= (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
+
+    if(currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
+
+    
   };
 
   const clear = () => {
